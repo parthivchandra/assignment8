@@ -1,0 +1,40 @@
+<%- include('partials/header') %>
+
+    <section class="hero">
+        <div class="hero-text">
+            <p class="welcome"><%= profile.welcomeText %></p>
+            <h1>Hello, I'm <span><%= profile.name %></span></h1>
+            <h2><%= profile.headline %></h2>
+            <p><%= profile.heroIntro %></p>
+
+            <div class="buttons">
+                <a href="/about" class="btn primary">About Me</a>
+                <a href="/contact" class="btn secondary">Contact Me</a>
+            </div>
+        </div>
+
+        <div class="hero-card">
+            <div class="profile-circle"><%= profile.initials %></div>
+            <h2><%= profile.name %></h2>
+            <% profile.cardLines.forEach(line => { %>
+                <p><%= line %></p>
+            <% }) %>
+        </div>
+    </section>
+
+    <section class="quick-section">
+        <h2>Explore My Portfolio</h2>
+        <p>Learn more about me and my skills</p>
+
+        <div class="cards">
+            <% profile.quickLinks.forEach(link => { %>
+                <a href="<%= link.url %>" class="card">
+                    <div class="icon"><%= link.icon %></div>
+                    <h3><%= link.title %></h3>
+                    <p><%= link.description %></p>
+                </a>
+            <% }) %>
+        </div>
+    </section>
+
+<%- include('partials/footer') %>

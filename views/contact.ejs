@@ -1,0 +1,63 @@
+<%- include('partials/header') %>
+
+    <section class="page-header">
+        <h1>Contact Me</h1>
+        <p>Let's connect and create something great</p>
+    </section>
+
+    <section class="contact-section">
+
+        <div class="contact-info">
+            <h2>Get In Touch</h2>
+            <p><%= profile.contactIntro %></p>
+
+            <div class="contact-item">
+                <div class="contact-icon">📍</div>
+                <div>
+                    <h3>Address</h3>
+                    <p>
+                        <% profile.address.split('\n').forEach((line, i, arr) => { %>
+                            <%= line %><% if (i < arr.length - 1) { %><br><% } %>
+                        <% }) %>
+                    </p>
+                </div>
+            </div>
+
+            <div class="contact-item">
+                <div class="contact-icon">📞</div>
+                <div>
+                    <h3>Phone</h3>
+                    <p><%= profile.phone %></p>
+                </div>
+            </div>
+
+            <div class="contact-item">
+                <div class="contact-icon">✉️</div>
+                <div>
+                    <h3>Email</h3>
+                    <p><%= profile.email %></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="contact-form">
+            <h2>Send Me a Message</h2>
+
+            <% if (status === 'success') { %>
+                <p class="flash success">Thanks! Your message has been sent.</p>
+            <% } else if (status === 'error') { %>
+                <p class="flash error">Sorry, something went wrong. Please try again.</p>
+            <% } %>
+
+            <form method="POST" action="/contact">
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="email" name="email" placeholder="Your Email" required>
+                <input type="text" name="subject" placeholder="Subject" required>
+                <textarea name="message" rows="6" placeholder="Your Message" required></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+
+    </section>
+
+<%- include('partials/footer') %>
